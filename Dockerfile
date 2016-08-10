@@ -1,5 +1,5 @@
 FROM tomcat:8
-MAINTAINER Thomas Klein <github.com/thklein>
+MAINTAINER Wayner Barrios <waybarrios@gmail.com>
 
 #
 # Set GeoServer version and data directory 
