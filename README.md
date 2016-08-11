@@ -11,15 +11,15 @@ This image is available as a [trusted build on the docker hub](https://registry.
 Simple pull the image from the docker hub.
 
 ```bash
-$ docker pull thklein/geoserver
+$ docker pull waybarrios/docker-geoserver
 ```
 
 Alternatively you can build the image locally
 
 ```bash
-$ git clone https://github.com/thklein/docker-geoserver.git
+$ git clone https://github.com/waybarrios/docker-geoserver.git
 $ cd docker-geoserver
-$ docker build -t "thklein/geoserver" .
+$ docker build -t "waybarrios/docker-geoserver" .
 ```
 
 ## Quick start
@@ -27,7 +27,7 @@ $ docker build -t "thklein/geoserver" .
 You can quick start the image using the command line
 
 ```bash
-$ docker run --name "geoserver" -d -p 8080:8080 thklein/geoserver
+$ docker run --name "geoserver" -d -p 8080:8080 waybarrios/docker-geoserver
 ```
 
 Point your browser to `http://localhost:8080/geoserver` and login using GeoServer's default username and password:
@@ -69,18 +69,4 @@ Now start the GeoServer instance by adding the `--link` option to the docker run
 --link postgis:postgis
 ```
 
-### Using docker-compose
 
-Instead of manually launching both containers(GeoServer & PostGIS) like described above, you can use [docker-compose](https://docs.docker.com/compose/).
-
-```bash
-$ wget https://raw.githubusercontent.com/thklein/docker-geoserver/master/docker-compose.yml
-```
- 
-Start GeoServer using:
-
-```bash
-docker-compose up
-```
-
-And you're done.
