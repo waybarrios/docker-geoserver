@@ -7,9 +7,9 @@
 		<genericProcessor>
 			<geonodeEncoder />
 			<topicSender>
-				<username></username>
-				<password></password>
-				<host>localhost</host>
+				<username>guest</username>
+				<password>guest</password>
+				<host>rabbitmq</host>
 				<port>5672</port>
 				<virtualHost>/</virtualHost>
 				<exchangeName>geonode</exchangeName>
@@ -24,9 +24,9 @@
 		<genericProcessor>
 			<geonodeEncoder />
 			<topicSender>
-				<username></username>
-				<password></password>
-				<host>localhost</host>
+				<username>guest</username>
+				<password>guest</password>
+				<host>rabbitmq</host>
 				<port>5672</port>
 				<virtualHost>/</virtualHost>
 				<exchangeName>geonode</exchangeName>
@@ -35,3 +35,4 @@
 		</genericProcessor>
 	</notificator>
 </notificationConfiguration>
+
