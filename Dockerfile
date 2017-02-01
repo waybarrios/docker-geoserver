@@ -5,7 +5,8 @@ MAINTAINER GeoNode Development Team
 # Set GeoServer version and data directory
 #
 ENV GEOSERVER_VERSION=2.9.x-oauth2
-ENV GEOSERVER_DATA_DIR="/geoserver_data/data"
+ENV GEOSERVER_DATA_DIR=/geoserver_data/data
+ENV GEOSERVER_WEB_LIB=/usr/local/tomcat/webapps/geoserver/WEB-INF/lib
 
 #
 # Download and install GeoServer
@@ -16,6 +17,9 @@ RUN cd /usr/local/tomcat/webapps \
     && rm geoserver-${GEOSERVER_VERSION}.war \
     && mkdir -p $GEOSERVER_DATA_DIR
 
+#Adding lib for geoserver
+COPY geoserver_plugin.zip  ${GEOSERVER_WEB_LIB}
+RUN cd ${GEOSERVER_WEB_LIB} && unzip -o geoserver_plugin.zip
 VOLUME $GEOSERVER_DATA_DIR
 
 # Set DOCKER_HOST address
@@ -48,6 +52,10 @@ RUN echo export BASE_URL=http://${NGINX_HOST}:${NGINX_PORT}/ | sed 's/tcp:\/\/\(
 # copy the script and perform the change to config.xml
 RUN mkdir -p /usr/local/tomcat/tmp
 WORKDIR /usr/local/tomcat/tmp
+
+#xml file with exchange config
+COPY notifier.xml  .
+
 COPY entrypoint.sh /usr/local/tomcat/tmp/entrypoint.sh
 RUN chmod +x /usr/local/tomcat/tmp/entrypoint.sh
 CMD ["/usr/local/tomcat/tmp/entrypoint.sh"]

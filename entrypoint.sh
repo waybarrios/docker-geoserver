@@ -10,6 +10,9 @@ source /root/.bashrc
 # SITEURL=http://nginx/
 # GEOSERVER_PUBLIC_LOCATION=http://nginx/geoserver/
 
+#xml file with exchange config
+mkdir -p  /geoserver_data/data/notifier/
+mv notifier.xml  /geoserver_data/data/notifier/notifier.xml
 
 # Set django url from environment variables.
 sed -i 's@http://localhost:8000/@'"$SITEURL"'@g' /geoserver_data/data/security/filter/geonode-oauth2/config.xml
